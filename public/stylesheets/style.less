@@ -31,6 +31,7 @@ body{
   font-family: "fsmeweb-light", sans-serif;
   font-weight: 400;
   overflow-x: hidden;
+	text-rendering: optimizeLegibility;
 }
 .container{
   height: 100%;
@@ -47,8 +48,13 @@ a{
   max-height: 70px;
   background: #FAFAFA;
   padding: 0 30px;
+	display: flex;
+	align-items: center;
+	border-bottom: 2px solid @primary-color;
   .logo{
-
+		width: 178px;
+		height: 28px;
+		background: url("../images/logo.svg") no-repeat;
   }
 
 }
@@ -68,7 +74,7 @@ a{
   position: absolute;
   width: 300px;
   float: left;
-  margin-left: 30px;
+  margin: 30px 0 0 30px;
   padding: 25px 20px;
   border: 1px solid #D7D7D7;
   border-radius: 20px;
@@ -107,11 +113,12 @@ a{
         float: left;
         font-family: "fsmeweb-regular";
         font-size: 16px;
+				margin-bottom: 7px;
       }
       .prediction-change{
         float: left;
         font-family: "fsmeweb-light";
-        font-size: 12px;
+        font-size: 14px;
       }
     }
     .prediction-value{
@@ -122,21 +129,102 @@ a{
     }
   }
 }
-.intro-button-container{
-  padding: 60px 30px 50px 30px;
-  .button-decline{
-    float: left;
-    height: 50px;
-    display: table;
+.plan-table-wrapper{
+	width: 100%;
+	padding: 30px 30px 0 360px;
+	float: left;
 
-    span{
-      display: table-cell;
-      vertical-align: middle;
-    }
-  }
-  .buttons-right{
-    float: right;
-  }
+	.plan-table{
+		width: 100%;
+		float: left;
+		border: 1px solid #E0E0E0;
+
+		.row1{width: 45%; float: left; padding: 25px 20px}
+		.row2{width: 30%; float: left; padding: 25px 20px}
+		.row3{width: 25%; float: left; padding: 25px 20px}
+
+		.plan-row-headers{
+			float: left;
+			width: 100%;
+			font-size: 16px;
+			font-family: "fsmeweb-regular";
+			color: #484641;
+			height: 85px;
+			display: flex;
+			align-items: center;
+			background: #ffffff; /* Old browsers */
+		  background: -moz-linear-gradient(top,  #ffffff 0%, #eeeeee 100%); /* FF3.6-15 */
+		  background: -webkit-linear-gradient(top,  #ffffff 0%,#eeeeee 100%); /* Chrome10-25,Safari5.1-6 */
+		  background: linear-gradient(to bottom,  #ffffff 0%,#eeeeee 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+		  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#eeeeee',GradientType=0 ); /* IE6-9 */
+			border-bottom: 1px solid #E0E0E0;
+		}
+		.plan-row-data{
+			font-family: "fsmeweb-light";
+			font-size: 16px;
+			color: #484641;
+			float: left;
+			border-bottom: 1px solid #E0E0E0;
+			.plan-name{
+				font-size: 20px;
+				color: @primary-color;
+				font-family: "fsmeweb-regular";
+				width: 100%;
+				float: left;
+				margin-bottom: 15px;
+			}
+			.plan-code{
+				width: 100%;
+				float: left;
+				margin-bottom: 15px;
+			}
+			.plan-details{
+				color: #046AB2;
+				text-decoration: underline;
+				float: left;
+				cursor: pointer;
+			}
+			.plan-cost{
+				margin-bottom: 15px;
+				&:last-child{
+					margin-bottom: 0;
+				}
+			}
+			.plan-oop{
+				margin-bottom: 15px;
+				font-family: "fsmeweb-bold";
+				font-size: 32px;
+			}
+			.plan-select{
+				color: #FFF;
+				padding: 10px 15px 10px 37px;
+				border-radius: 5px;
+				font-family: "fsmeweb-regular";
+				font-size: 16px;
+				background: #AA005F; /* Old browsers */
+			  background: -moz-linear-gradient(top,  #AA005F 0%, #88004C 100%); /* FF3.6-15 */
+			  background: -webkit-linear-gradient(top,  #AA005F 0%,#88004C 100%); /* Chrome10-25,Safari5.1-6 */
+			  background: linear-gradient(to bottom,  #AA005F 0%,#88004C 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+			  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#AA005F', endColorstr='#88004C',GradientType=0 ); /* IE6-9 */
+				position: relative;
+
+				span.select-icon{
+					position: absolute;
+					background: url("../images/right-white.svg");
+					left: 15px;
+					width: 12.75px;
+					height: 9.8px;
+					top: 13px;
+				}
+			}
+			&:nth-child(odd){
+				background: #EEE;
+			}
+			&:last-child{
+				border-bottom: none;
+			}
+		}
+	}
 }
 .primary-button{
   height: 50px;
