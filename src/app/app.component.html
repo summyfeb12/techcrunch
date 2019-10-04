@@ -1,0 +1,107 @@
+  <div class="intro-wrapper" id="intro">
+    <div class="header">
+        <div class="logo"></div>
+        <div class="panel-desc">
+            Search by your member ID: <input type=text [value]="searchValue" [formControl]="searchControl">
+            
+          </div>
+    </div>
+  <br>
+    <!-- Search panel -->
+    <div class="search-results">
+      <div *ngIf="searchResults.length>0">
+        <div *ngFor="let result of searchResults">
+            <div class="result-items" (click)=getPastData(result)>
+              <mark>{{ result.members_id }} </mark>
+            </div>
+        </div>  
+      </div>
+    </div>
+    <!-- Prediction panel -->
+    <div *ngIf="pastData">
+      <h2>
+          member id: {{ predictionData.members_id }}
+      </h2>
+      <div class="prediction-panel">
+        <div class="panel-desc">According to our predictions, these will be your medical needs for the next year:</div>
+        <div class="prediction-item"> <img class="prediction-icon" src="/assets/images/ambulance.svg">
+            <div class="prediction-content-holder">
+                <div class="prediction-title">Ambulance use</div>
+                <div class="clear"></div>
+                <div class="prediction-change">
+                    <span *ngIf="math.floor(predictionData.pot_cd_41) - pastData[0].pot_cd_pot_cd_41  > 0">+</span>
+                  {{ math.floor(predictionData.pot_cd_41) - pastData[0].pot_cd_pot_cd_41  }} from last year
+                </div>
+            </div>
+            <div class="prediction-value">{{ math.floor(predictionData.pot_cd_41) }} </div>
+        </div>
+        <div class="prediction-item"> <img class="prediction-icon" src="/assets/images/er.svg">
+            <div class="prediction-content-holder">
+                <div class="prediction-title">ER visits</div>
+                <div class="clear"></div>
+                <div class="prediction-change">
+                    <span *ngIf="math.floor(predictionData.pot_cd_23) - pastData[0].pot_cd_23 > 0">+</span>
+                    {{ math.floor(predictionData.pot_cd_23) - pastData[0].pot_cd_23  }} from last year
+                  </div>
+
+            </div>
+            <div class="prediction-value"> {{ math.floor(predictionData.pot_cd_23) }} </div>
+        </div>
+        <div class="prediction-item"> <img class="prediction-icon" src="/assets/images/lab.svg">
+            <div class="prediction-content-holder">
+                <div class="prediction-title">Labratory Tests</div>
+                <div class="clear"></div>
+                <div class="prediction-change">
+                    <span *ngIf="math.floor(predictionData.pot_cd_81) - pastData[0].pot_cd_pot_cd_81 > 0">+</span>
+                  {{ math.floor(predictionData.pot_cd_81) - pastData[0].pot_cd_pot_cd_81  }} from last year
+                </div>
+            </div>
+            <div class="prediction-value">{{ math.floor(predictionData.pot_cd_81) }}</div>
+        </div>
+        <div class="prediction-item"> <img class="prediction-icon" src="/assets/images/prescription.svg">
+            <div class="prediction-content-holder">
+                <div class="prediction-title">Prescription Drugs</div>
+                <div class="clear"></div>
+                <span *ngIf="math.floor(predictionData.net_paid_amt_for_rx_claims) - pastData[0].net_paid_amount_rx_claims > 0">+</span>
+                <div class="prediction-change"> {{ math.floor(predictionData.net_paid_amt_for_rx_claims) - pastData[0].net_paid_amount_rx_claims  }}  from last year</div>
+            </div>
+            <div class="prediction-value">${{ math.floor(predictionData.net_paid_amt_for_rx_claims) }}</div>
+        </div>
+        <!-- <div class="prediction-item"> <img class="prediction-icon" src="/assets/images/pulmonary.svg">
+            <div class="prediction-content-holder">
+                <div class="prediction-title">Pulmonary Services</div>
+                <div class="clear"></div>
+                <div class="prediction-change">Same as last year</div>
+            </div>
+            <div class="prediction-value">0</div>
+        </div> -->
+    </div>
+    <div class="plan-table-wrapper">
+        <div class="plan-table">
+            <div class="plan-row-headers">
+                <div class="row1">Plan name</div>
+                <div class="row2">Cost</div>
+                <div class="row3">Your out of pocket cost</div>
+            </div>
+            <div *ngFor="let eachPlan of calculatedCosts" class="plan-row-data">
+                <div class="row1">
+                    <div class="plan-name">{{ eachPlan.planName }}</div>
+                    <div class="plan-code">{{ eachPlan.planId }}</div>
+                    <div class="plan-details">View details</div>
+                </div>
+                <div class="row2">
+                    <div class="plan-cost">  Labratory Tests: ${{ eachPlan.cost.lab }} </div>
+                    <div class="plan-cost">  Emergency Room: ${{ eachPlan.cost.ed }} </div>
+                    <div class="plan-cost"> Ambulance Use: ${{ eachPlan.cost.ambulance }}</div>
+                </div>
+                <div class="row3">
+                    <div class="plan-oop"> ${{ eachPlan.outOfPocket }}</div>
+                    <button class="plan-select"><span class="select-icon"></span>Select Plan</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    
+</div>
+
