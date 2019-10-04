@@ -1,0 +1,53 @@
+{
+   "prediction": {
+       "EDVisits": 3,
+       "Labs": 5,
+       "AmbulanceVisits": 2
+   },
+   "plans": [
+       {
+           "planId": "H5521 - 099 - 000",
+           "planName": "Aetna Medicare Value Plan (PPO)",
+           "parent": "Aetna Inc.",
+           "cost": {
+               "lab": 5,
+               "ed": 90,
+               "ambulance": 265
+           },
+           "outOfPocket": 825
+       },
+       {
+           "planId": "H2228 - 019 - 000",
+           "planName": "AARP MedicareComplete Choice (PPO)",
+           "parent": "UnitedHealth Group, Inc.",
+           "cost": {
+               "lab": 5,
+               "ed": 90,
+               "ambulance": 250
+           },
+           "outOfPocket": 795
+       },
+       {
+           "planId": "H6348 - 002 - 000",
+           "planName": "Allwell Medicare (PPO)",
+           "parent": "Centene Corporation",
+           "cost": {
+               "lab": 5,
+               "ed": 90,
+               "ambulance": 295
+           },
+           "outOfPocket": 885
+       },
+       {
+           "planId": "H7220 - 002 - 000",
+           "planName": "IU Health Plans Medicare Select (HMO)",
+           "parent": "Indiana University Health",
+           "cost": {
+               "lab": 10,
+               "ed": 90,
+               "ambulance": 275
+           },
+           "outOfPocket": 870
+       }
+   ]
+}
